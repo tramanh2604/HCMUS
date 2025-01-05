@@ -1,4 +1,4 @@
-# Chapter 1: Quản lý tiến trình
+# Chapter 1: Quản lý tiến trình - Tổ chức quản lý
 
 ## Các mô hình xử lý đồng hành
 - Chương trình double click vào file exe => chuẩn bị k gian và nạp vào RAM.
@@ -60,3 +60,30 @@
 - Thông tin thống kê
 	+ Time sử dụng CPU
 	+ Time chờ
+
+---
+
+# Điều phối process
+
+![Danh sách process](../images/danh-sach-process.PNG)
+
+- Ready list: 
+- Waiting lists: mỗi tài nguyên có 1 hàng đợi khác nhau.
+
+## Bộ điều phối
+- Scheduler: chọn 1 tiến trình dựa trên 1 nguyên tắc của OS. Ví dụ ai đến trc được trc, độ ưu tiên ai cao hơn...
+- Dispatcher: chuyển CPU cho tiến trình được chọn. Đầu tiên báo cho process A, A lưu công việc vào context. Dispatcher chuyển CPU cho B, tuy nhiên báo trc cho B là nạp context cũ lên trước.
+
+![Bộ điều phối](../images/bo-dieu-phoi.PNG)
+
+## Mục tiêu điều phối
+- Công bằng (fairness): tất cả process đều có cơ hội nhận CPU.
+- Hiệu quả: tận dụng CPU 100% time.
+- Respone time (thời gian đáp ứng hợp lý): cực tiểu hóa time hồi đáp cho các tương tác của end user.
+- Time lưu lại trong hệ thống (turnaround time): cực tiểu hóa time hoàn tất.
+- Throughput (thông lượng tối đa): cực đại hóa số công việc đc xử lý trong 1 đơn vị time.
+
+## Nguyên tắc điều phối
+- Độc quyền: tiến trình giữ CPU luôn cho đến khi running xong.
+- K độc quyền: process đang running, nhưng OS yêu cầu thì trả CPU.
+
