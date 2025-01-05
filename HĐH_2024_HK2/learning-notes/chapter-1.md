@@ -6,7 +6,7 @@
 
 ## Nhu cầu xử lý đồng hành
 
-![Tiến trình](../images/tien-trinh.png)
+![Tiến trình](../images/tien-trinh.PNG)
 
 + CPU: giai đoạn tính toán, cần dùng đến CPU
 + IO: giai đoạn nhập/xuất ra màn hình.
@@ -35,7 +35,7 @@
 
 ## Các trạng thái của tiến trình
 
-![Các trạng thái](../images/trang-thai-tien-trinh-png)
+![Các trạng thái](../images/trang-thai-tien-trinh.PNG)
 
 - ready: có nhu cầu nhận CPU.
 - running: có CPU để chạy. Trong quá trình chạy mà hết thời gian mà vẫn còn nhu cầu chạy (tiến trình chưa xong) -> trả CPU -> ready -> chờ nhận lần tiếp.
@@ -45,7 +45,7 @@
 
 ## Cấu trúc dữ liệu khối quản lý tiến trình
 
-![Khối quản lý](../images/khoi-quan-ly-tien-trinh.png)
+![Khối quản lý](../images/khoi-quan-ly-tien-trinh.PNG)
 
 - Định danh (process ID)
 - Trạng thái tiến trình
@@ -86,4 +86,3 @@
 ## Nguyên tắc điều phối
 - Độc quyền: tiến trình giữ CPU luôn cho đến khi running xong.
 - K độc quyền: process đang running, nhưng OS yêu cầu thì trả CPU.
-
