@@ -1,4 +1,5 @@
 Dùng danh sách liên kết đơn để quản lý thông tin các NHÂN VIÊN của 1 công ty. Mỗi NHÂN VIÊN gồm các thông tin: Tên nhân viên, năm sinh, hệ số lương, lương cơ bản. 
+
 a.     Khai báo các cấu trúc dữ liệu cần thiết để có thể lưu trữ dưới dạng DSLK đơn. 
 
 ```
