@@ -1,6 +1,6 @@
 # Chương 2 - Hệ mật khóa bí mật
 
-![Sơ đồ](..images/so-do-he-bi-mat.PNG)
+![Sơ đồ](..images/so-do-he-bi-mat.png)
 
 Nguồn khóa trong hệ truyền tin mật phải truyền trong kênh an toàn. 
 
@@ -18,7 +18,7 @@ Nguồn khóa trong hệ truyền tin mật phải truyền trong kênh an toàn
 Bản rõ: HOC TAP TOT LAO DONG TOT
 Khóa k = 5
 
-![Bài tập](../images/bai-tap-1.PNG) 
+![Bài tập](../images/bai-tap-1.png) 
 - Nhược điểm: Dễ đoán vì mỗi ngôn ngữ phản ánh 1 ngôn ngữ của bản rõ, ví dụ chữ cái phổ biến trong TA là chữ E
 
 **- Mã Affine:**
@@ -33,7 +33,7 @@ Với k = (a,b) thuộc K ta định nghĩa:
 **Bài tập**
 Cho k = (7,3). Bản rõ It is nice today
 
-![Bài tập](../images/bai-tap-2.PNG)
+![Bài tập](../images/bai-tap-2.png)
 
 Giải mã: tính nghịch đảo.
 
