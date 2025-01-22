@@ -1,6 +1,6 @@
 # Chương 2 - Hệ mật khóa bí mật
 
-![Sơ đồ](..images/so-do-he-bi-mat.png)
+![Sơ đồ](..images/so-do-he-bi-mat.PNG)
 
 Nguồn khóa trong hệ truyền tin mật phải truyền trong kênh an toàn. 
 
