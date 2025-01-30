@@ -33,5 +33,5 @@ ci = mi + ki => bản mã => mi = ci - ki => bản rõ
 	+ ki: nguồn khóa ngẫu nhiên, mã dòng 1 lần, k lặp lại. quyết định độ an toàn của mã.
 	+ mi: nguồn tin.
 
-![Vernam](../images/vernam.PNG)
+![Vernam](../images/vernam.png)
 
