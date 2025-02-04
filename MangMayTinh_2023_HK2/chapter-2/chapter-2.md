@@ -94,3 +94,35 @@ N = 7 tầng
 - Mạng nhận đc gói data có kích thước lớn hơn MTU của nó => data phân mảnh thành gói nhỏ hơn để chuyển tiếp. 
 	+ gói nhỏ hơn gán thêm header để giúp quá trình nhận data đc chính xác.
 	
+# Bài 2 - TCP/IP một số kiến trúc mở rộng
+
+## 1. Giao thức UDP - transport
+- Là giao thức k kết nối (connectionless).
+- Sử dụng cho các ứng dụng k yêu cầu độ tin cậy cao. 
+- K có cơ chế xác nhận ACK, k đảm bảo chuyển giao các gói tin đến đích và theo đúng thứ tự.
+- K bỏ các gói tin trùng
+- Gán và quản lý port để định danh cho các ƯD
+
+![port](../images/port.PNG)
+
+- Sử dụng 16 bit để định danh port number.
+
+- Header UDP: Source port (16bit), Destination Port(16), Length(16), checksum(16)
+
+## 2. Giao thức TCP - transport
+- Hướng kết nối
+- Cung cấp các chức năng:
+	+ Thiết lập, duy trì, giải phóng liên kết 
+	+ Phân phát gói tin tin cậy
+	+ Tạo stt cho packet
+	+ Điều khiển lỗi
+	+ đa kết nối cho các quá trình khác nhau giữa thực thể nguồn - đích thông qua port number
+- Đặc điểm:
+	+ Ngăn sự tràn lụt, mất data
+	+ Bên nhận gửi xác nhận cho bên gửi đã nhận packet
+	+ IP datagram có thể đến đích k đúng thứ tự, TCP sắp xếp lại
+	+ Chỉ phát lại packet lỗi
+	+ Đơn vị: segment
+
+![Format TCP](../images/format-TCP.PNG)
+
