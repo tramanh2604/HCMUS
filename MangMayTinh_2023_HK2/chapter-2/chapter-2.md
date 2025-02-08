@@ -126,3 +126,95 @@ N = 7 tầng
 
 ![Format TCP](../images/format-TCP.PNG)
 
+- Sequence number: định danh gói tin
+- ACK number: xác nhận 
+- Code bits: bit cờ, hỗ trợ trong thiết lập kết nối
+
+- Bài tập: Xem giáo trình tiếng anh
+
+## 3. Giao thức điều khiển mạng ICMP
+- Là gthuc dkhien của tầng internet
+- Sử dụng để trao đổi các thông tin đkhiển: dòng dữ liệu, thông báo lỗi, thông tin trạng thái khác của bộ giao thức TCP/IP.
+- Vì IP protocol k có cơ chế kiểm soát lỗi & và kiểm soát luồng data -> cần hỗ trợ của ICMP.
+
+## 4. ARP và RARP
+- Giao thức phân giải đchi ARP
++ Tìm đchi vật lý của trạm đích
++ Khi cần gửi 1 IP datagram cho 1 hệ thống khác trên cùng 1 mạng vật lý ethernet: cần biết đchi Ethernet của destination để tầng liên kết xdung Frame.
+	+ cập nhật bảng tương ứng đhci IP-MAC
+- Giao thức phân giải đchi ngược RARP: cho trc MAC, tìm IP tương ứng
+
+- ARP gửi ARP request - broadcast tới tất cả các máy trong mạng hỏi ai có đchi IP này.
+	+ Host thấy gửi lại ARP reply - trả lời tôi có ddchi này, gửi lại đchi MAC
+- Tất cả các máy thu được bộ ánh xạ IP - MAC của host.
+- Nếu hỏi 1 máy ngoài mạng, thì route trả lời
+- RARP chỉ cấp IP. còn DHCP thì cung cấp nhiều hơn như default gateway....
+
+## 5. Giao thức Internet - IPv4
+- IPv4 và IPv6 là nòng cốt của gtiep Internet.
+- Biểu diễn và phân loại đchi IPv4:
+	+ 32 bit tách thành 4 octect (1byte)
+	+ Viết dưới dạng thập phân có dấu chấm để phân tách giữa các octet
+- Phân loại: class A,B,C,D,E
+- Mục đích sử dụng: 
+	+ Broadcast: định danh tất cả
+	+ unicast: định danh 1 thiết bị trong mạng
+	+ multicast: định danh 1 nhóm trong mạng
+- Phạm vi sử dụng: public và private
+
+**Câu hỏi tự học:**
+1. Mô tả cách thức hđ của RARP, BOOTP, DHCP. So sánh ưu nhược.
+2. Tìm hiểu kỹ thuật chuyển dịch đchi mạng NAT. Có mấy loại, đặc điểm từng loại.
+
+### 5.1 Phân lớp IPv4
+- Các bit đầu tiên đc dùng để định danh lớp đchi: 
+	+ 0 - A
+	+ 10 - B
+	+ 110 - C
+	+ 1110 - D
+	+ 1111 - E
+- A,B,C đc triển khai đặt cho các host trên mạng internet
+- D: multicast
+- E: mục đích nghiên cứu
+
+- 32 bit: Net_ID và Host_ID
+- Net_ID: k đc phép đồng thời = 0
+- Host_ID: sử dụng để xác định phần đchi máy: vừa có 0 và 1. 
+- Như vậy, đchi cho máy (hostid vừa 0 vừa 1), đchi cho mạng (hostid = 0), đchi quảng bá (hostid = 1) - đại diện tất cả các node trong mạng.
+
+![Class A,B,C](../images/class.PNG)
+
+![Nhận biết class A,B,C](../images/nhan-biet-class.PNG)
+
+- Lớp A đchi 0 và 127 k đc dùng: 1-126
+- Đchi quảng bá nội bộ: 1 máy trong mạng LAN, gửi gói tin đến tất cả các máy cùng mạng (255.255.255.255). tới router, bị hủy gói tin.
+- Đchi quảng bá trực tiếp: vd máy A có đchi 192.168.20.0 vậy đchi quảng bá 192.168.20.255 (giữ Net_ID, host lật về 1) có thể gửi sang mạng khác thông qua router
+
+- Xác định miền đchi (k gian đchi mạng): 2^n2 -2 (trừ đchi mạng và quảng bá).
+
+- Private IP address (đchi dành riêng): k đc sử dụng cho các host trên mạng LAN.
+	+ A: 10.0.0.0 - 10.255.255.255
+	+ B: 178.16.0.0 - 172.31.255.255
+	+ C: 192.168.0.0 - 192.168.255.255
+- Hạn chế của phân lớp đchi: 
+	+ Lãng phí k gian: các lớp cố định -> khó sử dụng hết dải đchi.
+- Khắc phục: chia mạng con. Có 2 kỹ thuật:
+	+ Subnetting
+	+ Kỹ thuật VLSM
+- Lợi ích mạng con:
+	+ giảm gói tin quảng bá
+	+ giảm nghẽn mạng
+
+### 5.2 SUbnet Mask
+- 1 mạng có thể chia thành các mạng con để dễ quản lý.
+	+ lấy thêm 1 số bit đchi host để đánh đchi mạng
+- Subnet mask: 32 bit, phần đchi mạng gồm toàn bit 1, đchi host gồm toàn bit 0.
+
+![Subnetting](../images/subnetting.PNG)
+
+![VLSM](../images/VLSM.PNG)
+
+![VLSM](../images/VD-VLSM.PNG)
+
+![VLSM](../images/vd2-VLSM.PNG)
+
