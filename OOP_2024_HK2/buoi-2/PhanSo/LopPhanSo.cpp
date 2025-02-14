@@ -10,18 +10,69 @@ void LopPhanSo::NhapPhanSo() {
 	scanf_s("%d", &MauSo);
 }
 
-LopPhanSo LopPhanSo::TinhTong(LopPhanSo b) {
+LopPhanSo LopPhanSo::operator+(LopPhanSo b) {
 	LopPhanSo kq;
 	kq.TuSo = TuSo * b.MauSo + MauSo * b.TuSo;
 	kq.MauSo = MauSo * b.MauSo;
 	return kq;
 }
 
-LopPhanSo LopPhanSo::TinhNhan(LopPhanSo b) {
+LopPhanSo LopPhanSo::operator-(LopPhanSo b) {
+	LopPhanSo kq;
+	kq.TuSo = TuSo * b.MauSo - MauSo * b.TuSo;
+	kq.MauSo = MauSo * b.MauSo;
+	return kq;
+}
+
+LopPhanSo LopPhanSo::operator/(LopPhanSo b) {
+	LopPhanSo kq;
+	//nghich dao b
+	b.NghichDao();
+	kq.TuSo = TuSo * b.TuSo;
+	kq.MauSo = MauSo * b.MauSo;
+	return kq;
+}
+
+LopPhanSo LopPhanSo::operator*(LopPhanSo b) {
 	LopPhanSo kq;
 	kq.TuSo = TuSo * b.TuSo;
 	kq.MauSo = MauSo * b.MauSo;
 	return kq;
+}
+
+bool LopPhanSo::operator==(LopPhanSo b) {
+	//Tao ban sao de rut gon
+	LopPhanSo A = *this, B = b;
+	A.RutGon();
+	B.RutGon();
+	return (A.TuSo == B.TuSo) && (A.MauSo == B.MauSo);
+}
+
+bool LopPhanSo::operator!=(LopPhanSo b) {
+	LopPhanSo A = *this, B = b;
+	A.RutGon();
+	B.RutGon();
+	return (A.TuSo != B.MauSo) || (A.MauSo != B.MauSo);
+}
+
+bool LopPhanSo::operator>(LopPhanSo b) {
+	LopPhanSo A = *this, B = b;
+	A.RutGon();
+	B.RutGon();
+
+	int TuA = A.TuSo * B.MauSo;
+	int TuB = B.TuSo * A.MauSo;
+	return TuA > TuB;
+}
+
+bool LopPhanSo::operator<(LopPhanSo b) {
+	LopPhanSo A = *this, B = b;
+	A.RutGon();
+	B.RutGon();
+	
+	int TuA = A.TuSo * B.MauSo;
+	int TuB = B.TuSo * A.MauSo;
+	return TuA < TuB;
 }
 
 void LopPhanSo::SoSanh(LopPhanSo b) {
@@ -79,6 +130,24 @@ LopPhanSo LopPhanSo::RutGon() {
 	return *this;
 }
 
+int LopPhanSo::DocTuSo() {
+	return TuSo;
+}
+
+int LopPhanSo::DocMauSo() {
+	return MauSo;
+}
+
+void LopPhanSo::GanTuSo(int k) {
+	TuSo = k;
+}
+
+void LopPhanSo::GanMauSo(int k) {
+	if (k != 0) {
+		TuSo = k;
+	}
+}
+
 //ham tim uoc chung
 int UCLN(int a, int b) {
 	if (b == 0) {
@@ -86,3 +155,4 @@ int UCLN(int a, int b) {
 	}
 	return UCLN(b, a % b);
 }
+
