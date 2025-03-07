@@ -205,7 +205,7 @@ N = 7 tầng
 	+ giảm gói tin quảng bá
 	+ giảm nghẽn mạng
 
-### 5.2 SUbnet Mask
+### 5.2 Subnet Mask
 - 1 mạng có thể chia thành các mạng con để dễ quản lý.
 	+ lấy thêm 1 số bit đchi host để đánh đchi mạng
 - Subnet mask: 32 bit, phần đchi mạng gồm toàn bit 1, đchi host gồm toàn bit 0.
@@ -218,3 +218,38 @@ N = 7 tầng
 
 ![VLSM](../images/vd2-VLSM.PNG)
 
+## 6. IPv6
+## 6.1 Công nghệ chuyển đổi IPv4-IPv6
+- Có 3 loại:
+	+ Ngăn xếp kéo: Dual-Stack
+	+ Đường hầm: tunnelling
+	+ Chuyển dịch: Translation
+- Dual-Stack: cho phép IPv4 và IPv6 cùng tồn tại trên cùng 1 mạng, chạy đồng thời 2 giao thức.
+- Tunnelling: vận chuyển gói IPv6 qua mạng IPv4. Gói IPv6 đc gói gọn trong 1 gói IPv4.
+- Translation: cho phép IPv6 giao tiếp vs IPv4 dùng kỹ thuật NAT64.
+
+## 6.2 Biểu diễn đchi IPv6
+- Độ dài 128 bit, dưới dạng hexa
+- Hextet để tách đoạn 16 bit: 8 hextet.
+- Tối thiểu: 0000; tối đa: ffff.
+- Rule 1: bỏ qua các số 0 ở đầu hextet.
+	+ Ví dụ: 2001:0d8b:000a:1000:0000:0000:0000:0100
+	=> 2001:d8b:a:1000:0:0:0:100
+- Rule 2: bỏ qua hextet toàn 0, chỉ dùng 1 lần
+	+ Ví dụ: 2001:d8b:a:1000:0:0:0:100
+	=> 2001:d8b:a:1000::0:0:100
+
+## 6.3 Phân loại
+- **Độ dài tiền tố IPv6 (prefix length)**
+- Địa chỉ IP / Độ dài tiền tố
+- prefix length: 0-128
+- Default: 64bit prefix | 64bit interface ID
+---
+- 3 loại: unicast, multicast, anycast (gửi đến máy gần nhất). **K có broadcast**.
+- 1 số loại unicast: 
+	+ Global Unicast: duy nhất trên toàn cầu, định tuyến trên internet
+	+ Link local: cùng 1 nội bộ mạng LAN
+	+ Loopback (::1/128): kiểm tra card mạng (giống mạng 127 trong IPv4).
+	+ Đchi đặc biệt (::/128)
+	+ unique local(fc00::/7-fdff::/7): xét hextet đầu tiên, giống IPv4 private
+	+ embedded IPv4 (nhúng IPv4): 
