@@ -2,7 +2,7 @@
 - File gồm có 2 dạng: text và binary
 
 ## Đĩa từ - Cấu trúc
-![HDD](/images/hdd.PNG)
+![HDD](images/hdd.PNG)
 
 - HDD (hard disk drive) gồm sectors, read-write head, track.
 - Gồm có nhiều đĩa, ghi data ở cả 2 mặt đĩa.
