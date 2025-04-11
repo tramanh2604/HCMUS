@@ -57,3 +57,11 @@
 # 2. Các loại phương tiện truyền dẫn
 ## 2.1 Hữu tuyến
 - Cáp xoắn đôi, cáp đồng trục, cáp quang
+- Khi nào đấu thẳng, khi nào đấu chéo?
+
+## 2.2 Vô tuyến
+- Sóng vô tuyến (radio)
+- Sóng viba
+- Sóng hồng ngoại
+- Sóng ánh sáng
+

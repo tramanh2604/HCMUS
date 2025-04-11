@@ -110,7 +110,7 @@
 
 ![entry](/images/chs.PNG)
 - Đổi ngược ra thập phân: 22 47 37 92: tức là đc tạo lúc 22 giờ 47p 37s 92ms
-- 2 byte offset 10: ngày tạo tệp. (phần năm cộng thêm 1980): 0x83 45 -> đổi nhị phân: 0100 0011 1000 0011 (cắt thành 7 4 5) -> đổi thập phân: 1980 + 33, 12, 3
+- 2 byte offset 10: ngày tạo tệp. (phần năm cộng thêm 1980): 0x83 43 -> đổi nhị phân: 0100 0011 1000 0011 (cắt thành 7 4 5) -> đổi thập phân: 1980 + 33, 12, 3
 - offset 14 2 byte: Cluster bắt đầu (2 byte cao)
 - offset 1a 2 byte: cluster bắt đầu (2 byte thấp)
 => ghét thấp tới cao: 07 00 00 00 =>đảo ngược: 0x00000007 = 7
@@ -141,3 +141,28 @@
 ![entry](/images/entry7.PNG)
 
 - Thay E5 bằng byte để phục hồi thư mục
+
+# 7. Cluster
+- Trong vùng data: chi thành các cluster = N sector liên tiếp. Vì lưu từng sector một rất tốn chi phí.
+- **cluster đầu tiên luôn đánh số 2** -> trong đề k ghi nhưng phải biết.
+- Các phần cluster còn lại lưu dưới dạng là DSLK, dưới dạng FAT.
+- Fat: bảng quản lý cluster.
+![Cluster](/images/cluster.PNG)
+	+ cluster 8 trong vùng DATA đang trống, có thể ghi data.
+	+ cluster 4 là BAD, bị hư, k nên lưu data
+	+ EOF là kết thúc file
+	+ 2 -> 3 -> 5: chuỗi cluster chứa tệp tin.
+- Có 3 FAT: FAT12, 16, 32 (biểu diễn số bit trong 1 phần tử)
+	+ 16 bit = 2 byte: đọc 2 byte liên tiếp theo little edian.
+	+ 32 bit = 4 byte: đọc 4 byte liên tiếp theo little edian.
+	+ 12 bit = 1 byte rưỡi
+	![FAT12](/images/fat12.PNG)
+- ![Cluster](/images/cluster2.PNG)
+
+# 8. Data
+- Nếu là file chứa data thật, còn folder thì chứa SDET.
+- Dựa vào FAT để ghép cluster. trong SDET cũng cha thành 32 byte
+- Đầu tiên: vô entry ráp 14 (00 00), 1A (00 07) (vị trí cluster bắt đầu): 00 00 00 07 = 7
+	+ cluster 7 bắt đầu tại scetor thứ bao nhiêu? Cần biết sector có kích thước bao nhiêu? cluster 7 tức là trải qua 5 cluster (bắt đầu từ 2).
+	![Cluster](/images/vd.PNG)
+
