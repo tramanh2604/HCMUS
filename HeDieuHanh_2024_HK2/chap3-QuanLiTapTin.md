@@ -19,7 +19,7 @@
 ## Thuật toán đọc đĩa
 - Mỗi gói tin nằm ở 1 đchi logic nào đó. Tập tin gồm nhiều gói tin. 
 
-![Tệp tin](/images/teptin.PNG)
+![Tệp tin](images/teptin.PNG)
 
 ### 1. First Come First Serve (FCFS)
 - Phục vụ theo thứ tự yêu cầu.
@@ -33,22 +33,22 @@
 - Chọn nhu cầu gần với vị trí hiện hành nhất.
 - Có nhiều yêu cầu phải chờ lâu
 
-![SSTF](/images/SSTF.PNG)
+![SSTF](images/SSTF.PNG)
 
 ## 3. Scan
 - Di chuyển đầu đọc về 1 phía của đĩa đến block xa nhất sau đó di chuyển về phía kia
 - Còn gọi là thuật toán thang máy
 
-![Scan](/images/scan.PNG)
+![Scan](images/scan.PNG)
 
 ## 4. C-Scan
-![C - Scan](/images/C-Scan.PNG)
+![C - Scan](images/C-Scan.PNG)
 
 - Di chuyển về tận cùng ở đĩa, rồi quay lại đầu, rồi lại tiếp tục.
 - Ưu điểm hơn Scan: tiết kiệm thời gian hơn. 
 
 ## 5. Look và C-Look
-![Look](/images/look.PNG)
+![Look](images/look.PNG)
 
 - Dịch chuyển đến gói tin xa nhất
 - Còn C-look là quay về đầu của đầu đọc. 
@@ -67,7 +67,7 @@
 ### Boot Sector
 - Gồm: FAT12/FAT16 và FAT32
 - Các thông số quan trọng của Boot Sector dạng FAT12/FAT16:
-![FAT12/FAT16](/images/FAT12-FAT16.PNG)
+![FAT12/FAT16](images/FAT12-FAT16.PNG)
 	+ 0B: 0x0200 (viết ngược) = 512 bytes/sector.
 	+ 0D: 0x10 = 16 sector/cluster
 	+ 0E: 0x0001 = 1 sector
@@ -75,7 +75,7 @@
 	+ 11: 0x0200 = 512 entry
 	+ 13: 0x0000 = 0 (đọc lại offset 20) 0x000FEEC2 = 1044162 sector
 	+ 16: 0x00FF = 255 sector / FAT
-![FAT12/FAT16](/images/FAT12-FAT162.PNG)
+![FAT12/FAT16](images/FAT12-FAT162.PNG)
 
 **Câu hỏi**
 1. Tổng số sector vùng SYSTEM (trc FAT, FAT RDET)
@@ -85,7 +85,7 @@
 
 2. sector đầu tiên của vùng FAT là sector mấy? giả sử sector đầu tiên của Partition là sector 0: Vì chỉ có 1 sector trc FAT, nên đó sector 0, vậy sector đầu của FAT là sector 1.
 
-![FAT12/FAT16](/images/FAT12-FAT163.PNG)
+![FAT12/FAT16](images/FAT12-FAT163.PNG)
 
 - Sector đầu tiên của RDET: 1 (trc FAT) + 255 x 2 = 511
 
@@ -96,19 +96,19 @@
 ## Entry chính
 - Phân biệt Entry chính phụ: nếu gtri ở offset B là 0F thì lạ entry phụ
 
-![RDET](/images/rdet.PNG)
+![RDET](images/rdet.PNG)
 - Offset B là OF => entry đầu (32 byte là entry phụ)
 - Entry 2 : phụ
 - Entry 3: chính => xử lý trước
 
-![entry](/images/entry.PNG)
+![entry](images/entry.PNG)
 - 8 byte đầu là tên chính của tệp tin: k đảo ngược, ánh xạ theo mã ASCII
 - 3 byte tiếp theo là phần mở rộng.
 - 1 byte tiếp (0001 0000): bật 1 ở bit 4 (directory): tức là entry cho thư mục. => vì là thư mục nên 3 byte phần mở rộng là 20 (tức là khoảng trắng, k có phần mở rộng)
-![entry](/images/entry2.PNG)
+![entry](images/entry2.PNG)
 - 3 byte offset D là giờ tạo (ghép đảo ngược): `0xB5 F5 5C`: 1011 0101 1111 0101 0101 1100. Cắt data thành những phần tương ứng: 1011 0| 101 111 | 1 0101 01 | 01 1100
 
-![entry](/images/chs.PNG)
+![entry](images/chs.PNG)
 - Đổi ngược ra thập phân: 22 47 37 92: tức là đc tạo lúc 22 giờ 47p 37s 92ms
 - 2 byte offset 10: ngày tạo tệp. (phần năm cộng thêm 1980): 0x83 43 -> đổi nhị phân: 0100 0011 1000 0011 (cắt thành 7 4 5) -> đổi thập phân: 1980 + 33, 12, 3
 - offset 14 2 byte: Cluster bắt đầu (2 byte cao)
@@ -118,27 +118,27 @@
 
 ## Entry phụ thứ 1
 - Xét ngược từ entry chính: gồm entry phụ 1 và entry phụ 2.
-![RDET](/images/rdet.PNG)
+![RDET](images/rdet.PNG)
 
 - Entry phụ là tên dài, hoặc tên đầy đủ của entry chính
 
-![entry](/images/entry3.PNG)
+![entry](images/entry3.PNG)
 
 - Offset 01 độ dài 10 byte: 4E 00 65 00 77 00 20 00 46 00
 - Offeset OE độ dài 12 byte: 
 - 1C 4 byte: 
 
-![entry](/images/entry4.PNG)
+![entry](images/entry4.PNG)
 
 ### Entry phụ thứ 2
-![entry](/images/entry5.PNG)
+![entry](images/entry5.PNG)
 - Đọc tới dấu đóng ngược: 29 còn đoạn 00 là khoảng trắng FF k đọc
 
 ## 6 dòng tiếp theo
-![entry](/images/entry6.PNG)
+![entry](images/entry6.PNG)
 - Có thuộc tính là gì? : 20 bật 1 ở bit 5 -> thuộc tính archive
 - Tên dài (tên đầy đủ): Ext Directory Entry.tpl
-![entry](/images/entry7.PNG)
+![entry](images/entry7.PNG)
 
 - Thay E5 bằng byte để phục hồi thư mục
 
@@ -147,7 +147,7 @@
 - **cluster đầu tiên luôn đánh số 2** -> trong đề k ghi nhưng phải biết.
 - Các phần cluster còn lại lưu dưới dạng là DSLK, dưới dạng FAT.
 - Fat: bảng quản lý cluster.
-![Cluster](/images/cluster.PNG)
+![Cluster](images/cluster.PNG)
 	+ cluster 8 trong vùng DATA đang trống, có thể ghi data.
 	+ cluster 4 là BAD, bị hư, k nên lưu data
 	+ EOF là kết thúc file
@@ -156,8 +156,8 @@
 	+ 16 bit = 2 byte: đọc 2 byte liên tiếp theo little edian.
 	+ 32 bit = 4 byte: đọc 4 byte liên tiếp theo little edian.
 	+ 12 bit = 1 byte rưỡi
-	![FAT12](/images/fat12.PNG)
-- ![Cluster](/images/cluster2.PNG)
+	![FAT12](images/fat12.PNG)
+- ![Cluster](images/cluster2.PNG)
 
 # 8. Data
 - Nếu là file chứa data thật, còn folder thì chứa SDET.
