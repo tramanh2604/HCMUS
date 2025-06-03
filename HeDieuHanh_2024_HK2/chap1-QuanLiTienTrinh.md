@@ -6,7 +6,7 @@
 
 ## Nhu cầu xử lý đồng hành
 
-![Tiến trình](/images/tien-trinh.PNG)
+![Tiến trình](images/tien-trinh.PNG)
 
 + CPU: giai đoạn tính toán, cần dùng đến CPU
 + IO: giai đoạn nhập/xuất ra màn hình.
@@ -35,7 +35,7 @@
 
 ## Các trạng thái của tiến trình
 
-![Các trạng thái](/images/trang-thai-tien-trinh.PNG)
+![Các trạng thái](images/trang-thai-tien-trinh.PNG)
 
 - ready: có nhu cầu nhận CPU.
 - running: có CPU để chạy. Trong quá trình chạy mà hết thời gian mà vẫn còn nhu cầu chạy (tiến trình chưa xong) -> trả CPU -> ready -> chờ nhận lần tiếp.
@@ -45,7 +45,7 @@
 
 ## Cấu trúc dữ liệu khối quản lý tiến trình
 
-![Khối quản lý](/images/khoi-quan-ly-tien-trinh.PNG)
+![Khối quản lý](images/khoi-quan-ly-tien-trinh.PNG)
 
 - Định danh (process ID)
 - Trạng thái tiến trình
@@ -65,7 +65,7 @@
 
 # Điều phối process
 
-![Danh sách process](/images/danh-sach-process.PNG)
+![Danh sách process](images/danh-sach-process.PNG)
 
 - Ready list: 
 - Waiting lists: mỗi tài nguyên có 1 hàng đợi khác nhau.
@@ -74,7 +74,7 @@
 - Scheduler: chọn 1 tiến trình dựa trên 1 nguyên tắc của OS. Ví dụ ai đến trc được trc, độ ưu tiên ai cao hơn...
 - Dispatcher: chuyển CPU cho tiến trình được chọn. Đầu tiên báo cho process A, A lưu công việc vào context. Dispatcher chuyển CPU cho B, tuy nhiên báo trc cho B là nạp context cũ lên trước.
 
-![Bộ điều phối](/images/bo-dieu-phoi.PNG)
+![Bộ điều phối](images/bo-dieu-phoi.PNG)
 
 ## Mục tiêu điều phối
 - Công bằng (fairness): tất cả process đều có cơ hội nhận CPU.
